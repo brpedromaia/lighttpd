@@ -21,9 +21,9 @@ jobs:
        -  name: Build and push
           uses: docker/build-push-action@v4
           with:
+            tags: v${{github.run_number}}, latest
             push: true
             context: .
-            tags: v${{github.run_number}}, latest
-            dockerfile: ContainerFile
+            file: ContainerFile
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
