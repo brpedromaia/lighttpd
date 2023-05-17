@@ -1,0 +1,15 @@
+FROM alpine:3.17.1
+
+USER root
+
+RUN apk update ;\
+    apk add --no-cache lighttpd ;\
+    rm -rf /var/cache/apk/* /tmp/* /sbin/halt /sbin/poweroff /sbin/reboot
+
+COPY --chmod=0777 lighttpd.conf /etc/lighttpd/lighttpd.conf
+COPY --chmod=0777 index.html /var/www/localhost/htdocs/
+
+EXPOSE 4000
+ENTRYPOINT [ "/bin/sh", "-c" ]
+CMD ["lighttpd -D -f /etc/lighttpd/lighttpd.conf"]
+
