@@ -24,6 +24,6 @@ jobs:
             tags: v${{github.run_number}}, latest
             push: true
             context: .
-            file: ContainerFile
+            file: ./ContainerFile
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
